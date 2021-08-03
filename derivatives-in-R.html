@@ -193,6 +193,23 @@ dg_dt</code></pre>
 <pre class="r"><code>t &lt;- 0
 eval(expr = dg_dt)</code></pre>
 <pre><code>## [1] -4</code></pre>
+<pre class="r"><code>Gz &lt;- expression(4.6 - 1.9 * (z^3))
+dG_dz &lt;- D(expr = Gz, &#39;z&#39;)
+dG_dz</code></pre>
+<pre><code>## -(1.9 * (3 * z^2))</code></pre>
+<pre class="r"><code>d2G_dz2 &lt;- D(expr = dG_dz, &#39;z&#39;)
+d2G_dz2</code></pre>
+<pre><code>## -(1.9 * (3 * (2 * z)))</code></pre>
+<pre class="r"><code>f_xyz &lt;- expression(2*x^2*y - 3*x + 1 + 4*z^4*x)
+df_dx &lt;- D(expr = f_xyz, &#39;x&#39;)
+df_dx</code></pre>
+<pre><code>## 2 * (2 * x) * y - 3 + 4 * z^4</code></pre>
+<pre class="r"><code>df_dy &lt;- D(expr = f_xyz, &#39;y&#39;)
+df_dy</code></pre>
+<pre><code>## 2 * x^2</code></pre>
+<pre class="r"><code>dg_dz &lt;- D(expr = f_xyz, &#39;z&#39;)
+dg_dz</code></pre>
+<pre><code>## 4 * (4 * z^3) * x</code></pre>
 
 
 

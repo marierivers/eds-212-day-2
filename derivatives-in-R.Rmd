@@ -31,3 +31,24 @@ t <- 0
 eval(expr = dg_dt)
 ```
 
+```{r}
+Gz <- expression(4.6 - 1.9 * (z^3))
+dG_dz <- D(expr = Gz, 'z')
+dG_dz
+
+d2G_dz2 <- D(expr = dG_dz, 'z')
+d2G_dz2
+```
+
+```{r}
+f_xyz <- expression(2*x^2*y - 3*x + 1 + 4*z^4*x)
+df_dx <- D(expr = f_xyz, 'x')
+df_dx
+
+df_dy <- D(expr = f_xyz, 'y')
+df_dy
+
+dg_dz <- D(expr = f_xyz, 'z')
+dg_dz
+```
+
