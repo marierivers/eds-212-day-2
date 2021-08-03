@@ -171,7 +171,28 @@ pre code {
 </div>
 
 
-
+<pre class="r"><code>fx &lt;- expression(x ^ 2)
+df_dx &lt;- D(expr = fx, &#39;x&#39;)
+df_dx</code></pre>
+<pre><code>## 2 * x</code></pre>
+<pre class="r"><code>x &lt;- 3
+eval(expr = df_dx)</code></pre>
+<pre><code>## [1] 6</code></pre>
+<pre class="r"><code>Pa &lt;- expression(2 * (((3 * a) + 2) ^ 4) - 5)
+dP_da &lt;- D(expr = Pa, &#39;a&#39;)
+dP_da</code></pre>
+<pre><code>## 2 * (4 * (3 * ((3 * a) + 2)^3))</code></pre>
+<pre class="r"><code>a &lt;- 1.2
+eval(expr = dP_da)</code></pre>
+<pre><code>## [1] 4214.784</code></pre>
+<pre class="r"><code>gt &lt;- expression((-4 * t) / (((t ^ 2) + 1)  ^ 3))
+dg_dt &lt;- D(expr = gt, &#39;t&#39;)
+dg_dt</code></pre>
+<pre><code>## -(4/(((t^2) + 1)^3) + (-4 * t) * (3 * (2 * t * ((t^2) + 1)^2))/(((t^2) + 
+##     1)^3)^2)</code></pre>
+<pre class="r"><code>t &lt;- 0
+eval(expr = dg_dt)</code></pre>
+<pre><code>## [1] -4</code></pre>
 
 
 
