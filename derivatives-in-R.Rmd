@@ -10,8 +10,9 @@ knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(palmerpenguins)
 ```
-
+## Section 3: Derivatives in R
 ```{r}
+# First Order univariate derivatives
 fx <- expression(x ^ 2)
 df_dx <- D(expr = fx, 'x')
 df_dx
@@ -32,6 +33,7 @@ eval(expr = dg_dt)
 ```
 
 ```{r}
+# Higher order univariate derivatives
 Gz <- expression(4.6 - 1.9 * (z^3))
 dG_dz <- D(expr = Gz, 'z')
 dG_dz
@@ -41,6 +43,7 @@ d2G_dz2
 ```
 
 ```{r}
+# partial derivatives
 f_xyz <- expression(2*x^2*y - 3*x + 1 + 4*z^4*x)
 df_dx <- D(expr = f_xyz, 'x')
 df_dx
@@ -50,5 +53,32 @@ df_dy
 
 dg_dz <- D(expr = f_xyz, 'z')
 dg_dz
+```
+## Section 4: Make Some Plots
+```{r}
+eq_fx <- function(x) {
+  (2.4 * (exp(-0.05*x)) * sin(x))
+}
+ggplot(data = data.frame (x = c(-.5, .5)), aes(x=x)) +
+  stat_function(fun = eq_fx)
+```
+```{r}
+#### Penguin bill length vs. bill depth
+ggplot(data = penguins, aes(x = bill_depth_mm, y = bill_length_mm)) +
+  geom_point(aes(color = species)) +
+  labs (x = "bill length (mm)",
+        y = "bill depth (mm)",
+        title = "Palmer penguins bill size",
+        caption = "data collected by KB Gorman ey al. at Palmer Station",
+        color = "species")
+        
+  
+```
+```{r}
+ggplot(data = penguins, aes(x = species, y = flipper_length_mm)) +
+  geom_jitter() +
+  labs (x = "species",
+        y = "flipper length (mm)",
+        title = "penguin flipper length by species")
 ```
 
